@@ -1,22 +1,23 @@
 // layout.tsx is a common template which is rendered in every page
-import '@/styles/globals.css';
-import Sidebar from '@/components/Sidebar';
-import { SessionProvider } from '@/components/SessionProvider';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from '@/pages/api/auth/[...nextauth]';
-import Login from '@/components/Login';
+import '@/styles/globals.css'
+import Sidebar from '@/components/Sidebar'
+import { SessionProvider } from '@/components/SessionProvider'
+import { getServerSession } from 'next-auth/next'
+import { authOptions } from '@/pages/api/auth/[...nextauth]'
+import Login from '@/components/Login'
+import ClientProvider from '@/components/ClientProvider'
 
 export const metadata = {
     title: 'Chat GPT Messenger',
     description: 'Messenger built with Chat GPT',
-};
+}
 
 export default async function RootLayout({
     children,
 }: {
-    children: React.ReactNode;
+    children: React.ReactNode
 }) {
-    const session = await getServerSession(authOptions);
+    const session = await getServerSession(authOptions)
 
     return (
         <html lang="en">
@@ -32,7 +33,7 @@ export default async function RootLayout({
                                 <Sidebar />
                             </div>
 
-                            {/* ClientProvider - for notifications */}
+                            <ClientProvider />
 
                             <div className="bg-[#343541] flex-1">
                                 {children}
@@ -42,5 +43,5 @@ export default async function RootLayout({
                 </SessionProvider>
             </body>
         </html>
-    );
+    )
 }
