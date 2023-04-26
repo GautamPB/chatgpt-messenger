@@ -25,8 +25,6 @@ function Sidebar() {
                 {/* New chat button */}
                 <NewChat />
 
-                <div>{/* model selection */}</div>
-
                 {/* chat rows */}
                 {chats?.docs.map((chat) => (
                     <ChatRow key={chat.id} id={chat.id} />
