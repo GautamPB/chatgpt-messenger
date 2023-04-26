@@ -12,7 +12,7 @@ const query = async (prompt: string, model: string) => {
             presence_penalty: 0,
         })
         .then((res) => {
-            return res.data.choices[0].text
+            res.data.choices[0].text
         })
         .catch(
             (err) =>
